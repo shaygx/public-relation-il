@@ -310,22 +310,15 @@ variable "ingress-rules-to-prtg-access" {
     to_port     = number
     protocol    = string
     cidr_blocks = list(string)
- }))
+  }))
+ 
 default = [
     {
-      from_port   = 443
-      to_port     = 443
+      from_port   = 22
+      to_port     = 22
       protocol    = "tcp"
       cidr_blocks = ["10.10.20.20/32"]
     },
-
-    {
-      from_port   = 161
-      to_port     = 162
-      protocol    = "udp"
-      cidr_blocks = ["10.10.20.20/32"]
-    },
-
 
     {
       from_port   = -1
@@ -333,43 +326,10 @@ default = [
       protocol    = "icmp"
       cidr_blocks = ["10.10.20.20/32"]
     },
-
-
-    {
-      from_port   = 80
-      to_port     = 80
-      protocol    = "tcp"
-      cidr_blocks = ["10.10.20.20/32"]
-    },
-
-
-    {
-      from_port   = 135
-      to_port     = 135
-      protocol    = "tcp"
-      cidr_blocks = ["10.10.20.20/32"]
-    },
-
-
-    {
-      from_port   = 49152
-      to_port     = 65535
-      protocol    = "tcp"
-      cidr_blocks = ["10.10.20.20/32"]
-    },
-
-
-    {
-      from_port   = 1024
-      to_port     = 5000
-      protocol    = "tcp"
-      cidr_blocks = ["10.10.20.20/32"]
-    },
-
-  ]
-
-}
-
+     
+   ]
+  }
+ 
 
 variable "subnet_ids" {
    description = "The IDs of the subnets where endpoints should be deployed"
